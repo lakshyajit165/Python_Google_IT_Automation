@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47743 -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:1416333}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="a57H3G9kGDRxzo5sLxZXTZIXTCiJnZFNDjzOOoEfj8F0F7su6MbVCbcvmim9f9EYoOo5rH84xGsKfPSXm4VKbQ==">
+<title>Handling Files | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to write a Python script that reads a CSV file containing a list of the employees in the organization, counts how many people are in each department, and then generates a report using this information." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Handling Files | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to write a Python script that reads a CSV file containing a list of the employees in the organization, counts how many people are in each department, and then generates a report using this information." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Handling Files _ Qwiklabs_week2_final_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="text/javascript" async="" src="./Handling Files _ Qwiklabs_week2_final_files/js"></script><script type="text/javascript" async="" src="./Handling Files _ Qwiklabs_week2_final_files/analytics.js"></script><script type="text/javascript" async="" src="./Handling Files _ Qwiklabs_week2_final_files/d58fn3dh7i2n.js"></script><script type="text/javascript" async="" src="./Handling Files _ Qwiklabs_week2_final_files/analytics.min.js"></script><script type="text/javascript" id="www-widgetapi-script" src="./Handling Files _ Qwiklabs_week2_final_files/www-widgetapi.js" async=""></script><script type="text/javascript" async="" src="./Handling Files _ Qwiklabs_week2_final_files/recaptcha__en.js"></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"LAKSHYAJIT","lastname":"LAXMIKANT","fullname":"LAKSHYAJIT LAXMIKANT","company":"Coursera","email":"lakshyajit165@gmail.com","origin":"googlecoursera-run, lti-coursera","subscriptions":0,"id":"789f4b2951493e14c965318ea3146db7","qlCreatedAt":"2019-02-08 14:17:59 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/api.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Handling Files _ Qwiklabs_week2_final_files/snippet.js"></script><script type="text/javascript" src="./Handling Files _ Qwiklabs_week2_final_files/asset_composer.e1bff6f5d65fe2db09e0.js" charset="utf-8" async=""></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Handling Files _ Qwiklabs_week2_final_files/application-1d3ba52a62db672fc03b169a92ebabc516e99d601001c570886d447605450dcd.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/webcomponents-loader.js"></script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/hallofmirrors-6fc40e44ff38aaf718697895ee628f449e9fe3e810f5e6cbc308494e0bc13152.js"></script><script async="" src="./Handling Files _ Qwiklabs_week2_final_files/lazy.min.js"></script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/iframe_api"></script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js"></script>
+<script src="./Handling Files _ Qwiklabs_week2_final_files/application-62dd18a5d24cafd385e8d522b9397c4c78c80e392576bae9fcd6e2f994fee522.js"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" cz-shortcut-listen="true">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Handling Files
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:1416333}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " src="./Handling Files _ Qwiklabs_week2_final_files/31c99f8d33487203415d57025d4a6b43.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " src="./Handling Files _ Qwiklabs_week2_final_files/31c99f8d33487203415d57025d4a6b43.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+LAKSHYAJIT LAXMIKANT
+</h4>
+<p class="body-2 text--gray">
+<span>lakshyajit165@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="a57H3G9kGDRxzo5sLxZXTZIXTCiJnZFNDjzOOoEfj8F0F7su6MbVCbcvmim9f9EYoOo5rH84xGsKfPSXm4VKbQ==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47743#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Handling Files&quot;,&quot;lab_name&quot;:&quot;Handling Files&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47743" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Handling Files
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47743/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.1988"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 67.1808px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>For this lab, imagine you are an IT Specialist at a medium-sized company. The Human Resources Department at your company wants you to find out how many people are in each department. You need to write a Python script that reads a CSV file containing a list of the employees in the organization, counts how many people are in each department, and then generates a report using this information. The output of this script will be a plain text file. We will guide you through each step of the lab.</p>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Handling Files _ Qwiklabs_week2_final_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Handling Files _ Qwiklabs_week2_final_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Handling Files _ Qwiklabs_week2_final_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Handling Files _ Qwiklabs_week2_final_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Handling Files _ Qwiklabs_week2_final_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Handling Files _ Qwiklabs_week2_final_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Handling Files _ Qwiklabs_week2_final_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-warningbox><strong>Disclaimer:</strong> The application used in this section is provided by a third party. Google provides no representation, warranty, or other guarantees about the validity or any other aspects of this application.</ql-warningbox>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Handling Files _ Qwiklabs_week2_final_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Termius - SSH Client from <a href="https://chrome.google.com/webstore/detail/termius-ssh-client/fjcdjmmkgnkgihjnlbgcdamkadlkbmam?hl=en" target="_blank">here</a> to your Chrome browser. Also, if you see any "We've Moved" prompt, please cancel that and go ahead to complete the lab.</p>
+</li>
+<li>
+<p>From the drop-down menu beside the logo of the app i.e., Termius, click <strong>Keychain</strong>.</p>
+</li>
+</ol>
+<p><img alt="Keychain" src="./Handling Files _ Qwiklabs_week2_final_files/LPcxt2Rpm1kymVGXBlEAU9bnrjFGJOcv1RDYUdAkpW4="></p>
+<ol start="3">
+<li>
+<p>At the bottom right of the window, click on the <strong>Add Key</strong> button, to add the downloaded PEM key.</p>
+</li>
+<li>
+<p>In the section <strong>Label</strong>, enter the downloaded PEM file name including the extension. Ex: qwikxxxxxxxxx.PEM. In the section <strong>Private key</strong>, paste the contents within the downloaded PEM file. Leave all the other values to their default, click the <strong>Save</strong> button. You have now successfully added the PEM key. Close the <strong>Termius Preferences</strong> window.</p>
+</li>
+<li>
+<p>Now click on <strong>New Host</strong> on the bottom right corner of the window. In the <strong>Address</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details section of the lab. For the <strong>Username</strong>, enter the username given in the Connection Details section of the lab. For the <strong>Password</strong>, click on <strong>Keys</strong> beside the password field and select the key you just added. Click the <strong>Select</strong> button on the top right corner to confirm the selected key.</p>
+</li>
+</ol>
+<p><img alt="Add host" src="./Handling Files _ Qwiklabs_week2_final_files/KDoi6WKkLJkqshrVep2tYHzxMk+fu4BTAXOCl_Bwmcc="></p>
+<ol start="6">
+<li>
+<p>Click the <strong>Save</strong> button to save the host. You can now see the host you just saved under the <strong>Hosts</strong>.</p>
+</li>
+<li>
+<p>Hover over the host you saved, <strong>Connect</strong> option appears on the right side.   Click <strong>Connect</strong> to connect to the saved host.
+<img alt="Connect host" src="./Handling Files _ Qwiklabs_week2_final_files/F1Ws8fBitbstLMfTdcNeY1flKV6d2ZOTuoOy_9YSaYM="></p>
+</li>
+<li>
+<p>For any prompt regarding the authenticity of the host, Click the <strong>Yes</strong> button.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Prerequisites</h2>
+<p>We have created the employee list for you. Navigate to the data directory using the following command:</p>
+<pre><code>cd data
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>To find the data, list the files using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>You can now see a file called <strong>employees.csv</strong>, where you will find your data. You can also see a directory called scripts. We will write the python script in this directory.</p>
+<p>To view the contents of the file, enter the following command:</p>
+<pre><code>cat employees.csv
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Let's start by writing the script. You will write this python script in the scripts directory. Go to the scripts directory by using the following command:</p>
+<pre><code>cd ~/scripts
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Create a file named <strong>generate_report.py</strong> using the following command:</p>
+<pre><code>nano generate_report.py
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>You will write your python script in this <strong>generate_report.py</strong> file. This script begins with a line containing the #! character combination, which is commonly called hash bang or shebang, and continues with the path to the interpreter. If the kernel finds that the first two bytes are #! then it uses the rest of the line as an interpreter and passes the file as an argument. We will use the following shebang in this script:</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-7" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<h2 id="step4">Convert employee data to dictionary</h2>
+<p>The goal of the script is to read the CSV file and generate a report with the total number of people in each department. To achieve this, we will divide the script into three functions.</p>
+<p>Let's start with the first function: <em>read_employees()</em>. This function receives a CSV file as a parameter and returns a list of dictionaries from that file. For this, we will use the CSV module.</p>
+<p>The CSV module uses classes to read and write tabular data in CSV format. The CSV library allows us to both read from and write to CSV files.</p>
+<p>Now, import the CSV module.</p>
+<pre><code>import csv
+</code><button class="button button--copy js-copy-button-8" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Define the function <em>read_employees</em>. This function takes file_location (path to employees.csv) as a parameter.</p>
+<pre><code>def read_employees(csv_file_location):
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>Open the CSV file by calling <strong>open</strong> and then <strong>csv.DictReader</strong>.</p>
+<p><code>DictReader</code> creates an object that operates like a regular reader (an object that iterates over lines in the given CSV file), but also maps the information it reads into a dictionary where keys are given by the optional <em>fieldnames</em> parameter. If we omit the <em>fieldnames</em> parameter, the values in the first row of the CSV file will be used as the keys. So, in this case, the first line of the CSV file has the keys and so there's no need to pass <em>fieldnames</em> as a parameter.</p>
+<p>We also need to pass a dialect as a parameter to this function. There isn't a well-defined standard for comma-separated value files, so the parser needs to be flexible. Flexibility here means that there are many parameters to control how csv parses or writes data. Rather than passing each of these parameters to the reader and writer separately, we group them together conveniently into a dialect object.</p>
+<p>Dialect classes can be registered by name so that callers of the CSV module don't need to know the parameter settings in advance. We will now register a dialect <strong>empDialect</strong>.</p>
+<pre><code>  csv.register_dialect('empDialect', skipinitialspace=True, strict=True)
+</code><button class="button button--copy js-copy-button-10" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The main purpose of this dialect is to remove any leading spaces while parsing the CSV file.</p>
+<p>The function will look similar to:</p>
+<pre><code>  employee_file = csv.DictReader(open(csv_file_location), dialect = 'empDialect')
+</code><button class="button button--copy js-copy-button-11" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>You now need to iterate over the CSV file that you opened, i.e., employee_file. When you iterate over a CSV file, each iteration of the loop produces a dictionary from strings (key) to strings (value).</p>
+<p>Append the dictionaries to an empty initialised list <strong>employee_list</strong> as you iterate over the CSV file.</p>
+<pre><code>  employee_list = []
+  for data in employee_file:
+    employee_list.append(data)
+</code><button class="button button--copy js-copy-button-12" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now return this list.</p>
+<pre><code>  return employee_list
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>To test the function, call the function and save it to a variable called <code>employee_list.</code> Pass the path to employees.csv as a parameter to the function. Print the variable <code>employee_list</code> to check whether it returns a list of dictionaries.</p>
+<pre><code>employee_list = read_employees('&lt;file_location&gt;')
+print(employee_list)
+</code><button class="button button--copy js-copy-button-14" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Replace <code>&lt;file_location&gt;</code> with the path to the employees.csv (this should look similar to the path <em>/home/&lt;username&gt;/data/employees.csv</em>). Replace <code>&lt;username&gt;</code> with the one mentioned in Connection Details Panel at left hand side.</p>
+<p>Save the file by clicking Ctrl-o, Enter, and Ctrl-x.</p>
+<p>For the file to run it needs to have execute permission (x). Let's update the file permissions and then try running the file. Use the following command to add execute permission to the file:</p>
+<pre><code>chmod +x generate_report.py
+</code><button class="button button--copy js-copy-button-15" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now test the function by running the file using the following command:</p>
+<pre><code>./generate_report.py
+</code><button class="button button--copy js-copy-button-16" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The list employees_list within the script should return the list of dictionaries as shown below.</p>
+<p><img alt="67583834df5977bb.png" src="./Handling Files _ Qwiklabs_week2_final_files/34yJi4Dtn9hrTnj7iVRtpdg69SxaIK2ZaijqJipbqJI="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="11673907">
+Convert employee data to dictionary
+</ql-activity-tracking></p>
+<ql-infobox><strong>Note: </strong>You can now remove the print statements once you get the desired output and have been assessed for this section.</ql-infobox>
+<h2 id="step5">Process employee data</h2>
+<p>The second function <em>process_data()</em> should now receive the list of dictionaries, i.e., employee_list as a parameter and return a dictionary of <strong>department:amount</strong>.</p>
+<p>Open the file generate_report.py to define the function.</p>
+<pre><code>nano generate_report.py
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>def process_data(employee_list):
+</code><button class="button button--copy js-copy-button-18" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This function needs to pass the <code>employee_list</code>, received from the previous section, as a parameter to the function.</p>
+<p>Now, initialize a new list called department_list, iterate over employee_list, and add only the departments into the <strong>department_list</strong>.</p>
+<pre><code>  department_list = []
+  for employee_data in employee_list:
+    department_list.append(employee_data['Department'])
+</code><button class="button button--copy js-copy-button-19" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The department_list should now have a redundant list of all the department names. We now have to remove the redundancy and return a dictionary. We will return this dicationary in the format <strong>department:amount</strong>, where amount is the number of employees in that particular department.</p>
+<pre><code>  department_data = {}
+  for department_name in set(department_list):
+    department_data[department_name] = department_list.count(department_name)
+  return department_data
+</code><button class="button button--copy js-copy-button-20" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This uses the set() method, which converts iterable elements to distinct elements.</p>
+<p>Now, call this function by passing the <code>employee_list</code> from the previous section. Then, save the output in a variable called <code>dictionary</code>. Print the variable <code>dictionary</code>.</p>
+<pre><code>dictionary = process_data(employee_list)
+print(dictionary)
+</code><button class="button button--copy js-copy-button-21" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter, and Ctrl-x.</p>
+<p>Now test the function by running the file using the following command:</p>
+<pre><code>./generate_report.py
+</code><button class="button button--copy js-copy-button-22" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This should return a dictionary in the format <strong>department: amount</strong>, as shown below.</p>
+<p><img alt="1c2daf5cbaa58c07.png" src="./Handling Files _ Qwiklabs_week2_final_files/GEZ0BrlPKu2ecgNF_V8C_GZSUgFtWlZyS9jN6wXoa50="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="11673907">
+Process employee data
+</ql-activity-tracking></p>
+<ql-infobox><strong>Note: </strong>You can now remove the print statements once you get the desired output and have been assessed for this section.</ql-infobox>
+<h2 id="step6">Generate a report</h2>
+<p>Next, we will write the function <em>write_report</em>. This function writes a dictionary of <strong>department: amount</strong> to a file.</p>
+<p>The report should have the format:</p>
+<p>&lt;department1&gt;: &lt;amount1&gt;</p>
+<p>&lt;department2&gt;: &lt;amount2&gt;</p>
+<p>Lets open <strong>generate_report.py</strong> file to define the function.</p>
+<pre><code>nano generate_report.py
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>def write_report(dictionary, report_file):
+</code><button class="button button--copy js-copy-button-24" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This function requires a <code>dictionary</code>, from the previous section, and <code>report_file</code>, an output file to generate report, to both be passed as parameters.</p>
+<p>You will use the <code>open()</code> function to open a file and return a corresponding file object. This function requires file path and file mode to be passed as parameters. The file mode is 'r' (reading) by default, so you should now explicitly pass 'w+' mode (open for reading and writing, overwriting a file) as a parameter.</p>
+<p>Once you open the file for writing, iterate through the dictionary and use <code>write()</code> on the file to store the data.</p>
+<pre><code>  with open(report_file, "w+") as f:
+    for k in sorted(dictionary):
+      f.write(str(k)+':'+str(dictionary[k])+'\n')
+    f.close()
+</code><button class="button button--copy js-copy-button-25" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now call the function <em>write_report()</em> by passing a <code>dictionary</code> variable from the previous section and also passing a report_file. The report_file passed within this function should be similar to <em>/home/&lt;username&gt;/data/report.txt</em>. Replace <code>&lt;username&gt;</code> with the one mentioned in Connection Details Panel at left-hand side.</p>
+<pre><code>write_report(dictionary, '&lt;report_file&gt;')
+</code><button class="button button--copy js-copy-button-26" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter, and Ctrl-x.</p>
+<p>Let's execute the script now.</p>
+<pre><code>./generate_report.py
+</code><button class="button button--copy js-copy-button-27"><i class="fa fa-clipboard"></i></button></pre>
+<p>This script does not generate any output, but it creates a new file named <strong>report.txt</strong> within the <strong>data</strong> directory. This report.txt file should now have the count of people in each department.</p>
+<p>Navigate to the <code>data</code> directory and list the files. You should see a new file named <strong>report.txt</strong>.</p>
+<pre><code>cd ~/data
+</code><button class="button button--copy js-copy-button-28"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-29"><i class="fa fa-clipboard"></i></button></pre>
+<p>To view the generated report file, use the following command:</p>
+<pre><code>cat report.txt
+</code><button class="button button--copy js-copy-button-30"><i class="fa fa-clipboard"></i></button></pre>
+<p>The report file should be similar to the below image.</p>
+<p><img alt="6414b93d8fccda7b.png" src="./Handling Files _ Qwiklabs_week2_final_files/biV9qHPyqAYfGVa246u5rZGbScQ1L3PZ+rTZVmCwCHc="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3" labinstanceid="11673907">
+Generate a report
+</ql-activity-tracking></p>
+<h2 id="step7">Congratulations!</h2>
+<p>You successfully wrote a Python script that achieves two tasks. First, it reads a CSV file containing a list of the employees in the organization.  Second, it generates a report of the number of people in each department in a plain text file.</p>
+<p>Creating reports using Python is a very useful tool in IT support. You will likely complete similar tasks regularly throughout your career, so feel free to go through this lab more than once. Remember, practice makes perfect.</p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47743#step1" class="">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step2" class="">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step3" class="">Prerequisites</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step4" class="">Convert employee data to dictionary</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step5" class="">Process employee data</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step6" class="is-active">Generate a report</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step7" class="">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47743#step8" class="">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">15/15</h3>
+<iframe class="l-ie-iframe-fix" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Convert employee data to dictionary
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">5</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Process employee data 
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">5</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Generate a report
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="3">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">5</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Handling Files _ Qwiklabs_week2_final_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to write a Python script that reads a CSV file containing a list of the employees in the organization, counts how many people are in each department, and then generates a report using this information.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2383">https://googlecoursera.qwiklabs.com/catalog_lab/2383</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="1416333" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6087" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2383" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47743" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./Handling Files _ Qwiklabs_week2_final_files/anchor.html" width="256" height="60" role="presentation" name="a-nql92bxf18qf" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div id="drift-widget-container" style="position: absolute; z-index: 2147483647;"><iframe id="drift-widget" src="./Handling Files _ Qwiklabs_week2_final_files/index.html" title="Drift Messenger" role="complementary" style="border: none; display: block; height: 0px !important; width: 0px !important; position: fixed; top: auto; left: auto; bottom: 0px; right: 0px; visibility: hidden; z-index: 2147483647; max-height: 100vh; max-width: 100vw; transition: none 0s ease 0s; background: none transparent; opacity: 1; pointer-events: auto; touch-action: auto;" class="drift-widget-hidden"></iframe></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 113px;width: 113px;" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Handling Files _ Qwiklabs_week2_final_files/saved_resource(7).html"></iframe></div></body></html>
