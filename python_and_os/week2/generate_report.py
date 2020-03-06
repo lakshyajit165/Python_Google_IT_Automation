@@ -39,4 +39,3 @@ dictionary = process_data(employee_list)
 # pass path to report.txt(file is supposed to be created)
 write_report(dictionary, '/home/student-03-95d87715526c/test_report.txt')
 
-with open('software.csv') as software:
