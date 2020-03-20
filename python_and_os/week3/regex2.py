@@ -1,6 +1,6 @@
 # code to check if the text passed contains punctuation symbols: commas, periods, colons, semicolons, question marks, and exclamation points.
 
-#!usr/bin/env python3
+#!/usr/bin/env python3
 
 import re
 def check_punctuation(text):
