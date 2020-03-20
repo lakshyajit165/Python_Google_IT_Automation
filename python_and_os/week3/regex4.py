@@ -6,7 +6,7 @@ Fill in the code to check if the text passed has at least 2
 
 
 '''
-#!usr/bin/env python3
+#!/usr/bin/env python3
 
 import re
 def check_character_groups(text):
