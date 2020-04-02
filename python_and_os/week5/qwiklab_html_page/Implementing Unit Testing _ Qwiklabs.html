@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47746 -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:1416333}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="T6lzJ3SPXm3rXfzfwO5UI0yFd6byTmhoi1CRLkJzd7owmaPFljHM9A+Gjx+1BmTuowEPv94frzLLMvnBb5ZRzQ==">
+<title>Implementing Unit Testing | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="In this lab, we will be writing test cases and correcting bugs within the existing script." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Implementing Unit Testing | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="In this lab, we will be writing test cases and correcting bugs within the existing script." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Implementing Unit Testing _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="text/javascript" async="" src="./Implementing Unit Testing _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Implementing Unit Testing _ Qwiklabs_files/analytics.js"></script><script type="text/javascript" async="" src="./Implementing Unit Testing _ Qwiklabs_files/d58fn3dh7i2n.js"></script><script type="text/javascript" async="" src="./Implementing Unit Testing _ Qwiklabs_files/analytics.min.js"></script><script type="text/javascript" id="www-widgetapi-script" src="./Implementing Unit Testing _ Qwiklabs_files/www-widgetapi.js" async=""></script><script type="text/javascript" async="" src="./Implementing Unit Testing _ Qwiklabs_files/recaptcha__en.js"></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"LAKSHYAJIT","lastname":"LAXMIKANT","fullname":"LAKSHYAJIT LAXMIKANT","company":"Coursera","email":"lakshyajit165@gmail.com","origin":"googlecoursera-run, lti-coursera","subscriptions":0,"id":"789f4b2951493e14c965318ea3146db7","qlCreatedAt":"2019-02-08 14:17:59 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/api.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Implementing Unit Testing _ Qwiklabs_files/snippet.js"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Implementing Unit Testing _ Qwiklabs_files/application-0fbb2e2ec51da40239f1b54d7bd34aa50f59bc233036120124c2fb4e6c5fd90e.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/webcomponents-loader.js"></script><script src="./Implementing Unit Testing _ Qwiklabs_files/webcomponents-hi.js"></script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/hallofmirrors-c8a543a8e9e63ffd57a2b2bb36bd5c342eaa604dffa0f1c63a43d84ccebe2d76.js"></script><script async="" src="./Implementing Unit Testing _ Qwiklabs_files/lazy.min.js"></script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/iframe_api"></script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js"></script>
+<script src="./Implementing Unit Testing _ Qwiklabs_files/application-3fc70562de25b3405b5605bd7e10c53474b5c01cb26ae806a9f1c321050f4a1d.js"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" cz-shortcut-listen="true">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Implementing Unit Testing
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:1416333}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Implementing Unit Testing _ Qwiklabs_files/31c99f8d33487203415d57025d4a6b43.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Implementing Unit Testing _ Qwiklabs_files/31c99f8d33487203415d57025d4a6b43.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+LAKSHYAJIT LAXMIKANT
+</h4>
+<p class="body-2 text--gray">
+<span>lakshyajit165@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">3 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="T6lzJ3SPXm3rXfzfwO5UI0yFd6byTmhoi1CRLkJzd7owmaPFljHM9A+Gjx+1BmTuowEPv94frzLLMvnBb5ZRzQ==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47746#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Implementing Unit Testing&quot;,&quot;lab_name&quot;:&quot;Implementing Unit Testing&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47746" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Implementing Unit Testing
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47746/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.435"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 70.96px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>Imagine one of your IT coworkers just retired and left a folder of scripts for you to use. One of the scripts, called <strong>emails.py</strong>, matches users to an email address and lets us easily look them up! For the most part, the script works great — you enter in an employee's name and their email is printed to the screen. But, for some employees, the output doesn't look quite right. Your job is to add a test to reproduce the bug, make the necessary corrections, and verify that all the tests pass to make sure the script works! Best of luck!</p>
+<h3>What you'll do</h3>
+<p>In this lab, you will:</p>
+<ul>
+<li>Write a simple test to check for basic functionality</li>
+<li>Write a test to check for edge cases</li>
+<li>Correct code with a try/except statement</li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Implementing Unit Testing _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Implementing Unit Testing _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Implementing Unit Testing _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Implementing Unit Testing _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Implementing Unit Testing _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Implementing Unit Testing _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Implementing Unit Testing _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Implementing Unit Testing _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Implementing Unit Testing _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Implementing Unit Testing _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Implementing Unit Testing _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Prerequisites</h2>
+<p>First, you need to find the .csv file called <strong>user_emails.csv</strong>, which contains user names and their respective email addresses within the <strong>data</strong> directory. Navigate to this directory using the following command:</p>
+<pre><code>cd ~/data
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>List the files using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>You should now see a file named <strong>user_emails.csv</strong>. To view the contents of the <strong>user_emails.csv</strong> file, enter the following command:</p>
+<pre><code>cat user_emails.csv
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Your IT coworker has also left a script named <strong>emails.py</strong> within the <strong>scripts</strong> directory.</p>
+<p>Use the following command to navigate to the <strong>scripts</strong> directory:</p>
+<pre><code>cd ~/scripts
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now list the contents within the <strong>scripts</strong> directory using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>Here, you will find the script named <strong>emails.py</strong>. This script aims to match users to their respective email addresses.</p>
+<p>You can view the file using the following command:</p>
+<pre><code>cat emails.py
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>This script consists of two functions: populate_dictionary(filename) and find_email(argv). The function <em>populate_dictionary(filename)</em> reads the user_emails.csv file and populates a dictionary with name/value pairs. The other function, <em>find_emails(argv)</em>, searches the dictionary created in the previous function for the user name passed to the function as a parameter. It then returns the associated email address. This script accepts employee's first name and last name as command-line arguments and outputs their email address.</p>
+<p>The script accepts arguments through the command line. These arguments are stored in a list named <strong>sys.argv</strong>. The first element of this list, i.e. argv[0], is always the name of the file being executed. So the parameters, i.e., first name and last name, are then stored in argv[1] and argv[2] respectively.</p>
+<p>Let's test the script now.</p>
+<p>Since you know the contents of the <strong>user_emails.csv</strong> file, choose any name to be passed as a parameter, or you can use the following name:</p>
+<pre><code>python3 emails.py Blossom Gill
+</code><button class="button button--copy js-copy-button-8" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This will give you the email address associated with the Full Name passed as parameters. In this case, the name is Blossom Gill and the email ID associated with this name is blossom@abc.edu.</p>
+<p><img alt="f266d9bee9b399bf.png" src="./Implementing Unit Testing _ Qwiklabs_files/xCf9yjcViU_qzL2e+Fi1V9biBNS5Gbgu1bcEeqQj8Bw="></p>
+<p>That was simple and straightforward. But this script has few bugs. In the next part of this lab, we will design some test cases and correct the bugs in the script.</p>
+<h2 id="step4">Introduction to test cases</h2>
+<p>Writing a test encourages you to think through the script's design and goals before writing the code. This keeps you focused and lets you create better designs. If you learn how to easily test your scripts, you'll be able to create code that's better defined and cohesive.</p>
+<p>In this lab, we will write tests and correct bugs within the existing script.</p>
+<p>In this section, we will write a basic test case and see how it works. A test case is an individual unit of testing that checks for a specific response to a particular set of inputs.</p>
+<p>Use the following command to create a new file (in scripts directory) to write our test cases:</p>
+<pre><code>nano ~/scripts/emails_test.py
+</code><button class="button button--copy js-copy-button-9" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The file should now open in edit mode. This script's primary objective is to write test cases that correct bugs in the existing emails.py script. We will use the unittest package for this.</p>
+<p>Add the following shebang line and import the necessary packages:</p>
+<pre><code>#!/usr/bin/env python3
+import unittest
+</code><button class="button button--copy js-copy-button-10" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The package <strong>unittest</strong> supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. This module also provides classes that make it simple to support these qualities for a set of tests.</p>
+<p>The following import statement allows a Python file to access the script from another Python file. In this case, we will import the function <strong>find_email</strong>, which is defined in the script <strong>emails.py</strong>.</p>
+<pre><code>from emails import find_email
+</code><button class="button button--copy js-copy-button-11" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now let's create a class:</p>
+<pre><code>class EmailsTest(unittest.TestCase):
+</code><button class="button button--copy js-copy-button-12" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Classes are a way to bundle data and functionality together. Creating a new class creates a new type of object, which further allows new instances of that type to be made.</p>
+<p>Another important aspect of the unittest module is the test runner. A test runner is a component that orchestrates the execution of tests and provides the outcome to the user.</p>
+<p>A test case is created by subclassing <strong>unittest.TestCase</strong>. Let's write our first basic test case, <strong>test_basic</strong>.</p>
+<pre><code>  def test_basic(self):
+    testcase = [None, "Bree", "Campbell"]
+    expected = "breee@abc.edu"
+    self.assertEqual(find_email(testcase), expected)
+if __name__ == '__main__':
+  unittest.main()
+</code><button class="button button--copy js-copy-button-13" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Here, variable <strong>test case</strong> contains the parameters to be passed to the script emails.py. As we mentioned, the script file is the first element of input parameters through command line using argv. Since we already imported the function find_email from emails.py earlier, we will pass None in place of the script file and call it later in the script. Adding to None, we will pass a first name and last name as parameters.</p>
+<p>The variable stores the expected value to be returned by emails.py. The method assertEqual passes the test case to the function find_email, which we imported earlier from emails.py, and checks whether it generates the expected output.</p>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>We will run this file through the command line here. To do this, we will give the file permissions for execution.</p>
+<pre><code>chmod +x emails_test.py
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, let's run our first test case using the following command:</p>
+<pre><code>./emails_test.py
+</code><button class="button button--copy js-copy-button-15"><i class="fa fa-clipboard"></i></button></pre>
+<p>The output shows the number of tests run and its associated output.</p>
+<p><img alt="45050237c2d0e1db.png" src="./Implementing Unit Testing _ Qwiklabs_files/xI2+mNuLefVIB4aGR_IdSWKFwD8gYnJFqoj0ojw56cQ="></p>
+<p>The test case passed. This was a basic test case to show how test cases with Python work. In the next section, we will write a few more test cases covering other possibilities.</p>
+<h2 id="step5">Test Case 1: Missing parameters</h2>
+<p>Imagine a scenario where the user doesn't give either their first name or last name. What do you think the output would be in this case?</p>
+<p>Lets try this out. Choose any first or last name of your choice or use the following name to be passed to <strong>emails.py</strong> as a parameter:</p>
+<pre><code>python3 emails.py Kirk
+</code><button class="button button--copy js-copy-button-16"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="2c9abfdcbc154cc.png" src="./Implementing Unit Testing _ Qwiklabs_files/SCBkQ7wqmVGR54ZUpJid_PqIg1ytmiYgiVFJAt6QLiQ="></p>
+<p>This now gives us an error. The script doesn't take just one parameter as input and so it produces an error.</p>
+<p>Let's now write a test case to handle this type of error. This test case should pass just the first name to the script.</p>
+<pre><code>nano emails_test.py
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the test case <strong>test_one_name</strong> just after the first test case.</p>
+<p><strong>Pro tip:</strong> Note down the name of the test cases. Knowing the names will be helpful in running individual tests.</p>
+<pre><code>  def test_one_name(self):
+    testcase = [None, "John"]
+    expected = "Missing parameters"
+    self.assertEqual(find_email(testcase), expected)
+</code><button class="button button--copy js-copy-button-18" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The file <strong>emails_test.py</strong> should now look like this:</p>
+<pre><code>#!/usr/bin/env python3
+
+import unittest
+from emails import find_email
+
+class TestFile(unittest.TestCase):
+  def test_basic(self):
+    testcase = [None, "Bree", "Campbell"]
+    expected = "breee@abc.edu"
+    self.assertEqual(find_email(testcase), expected)
+
+  def test_one_name(self):
+    testcase = [None, "John"]
+    expected = "Missing parameters"
+    self.assertEqual(find_email(testcase), expected)
+
+if __name__ == '__main__':
+  unittest.main()
+</code><button class="button button--copy js-copy-button-19"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>Now run the second test using the following command:</p>
+<pre><code>./emails_test.py
+</code><button class="button button--copy js-copy-button-20"><i class="fa fa-clipboard"></i></button></pre>
+<p>Another way to run a particular function within the script is to specify the class name and the function name you want to run. This helps us run individual tests without having to run all the test cases in the test script again.</p>
+<p>This now returns the following output:</p>
+<p><img alt="Test case two fail" src="./Implementing Unit Testing _ Qwiklabs_files/cIQea31CFFA3viD8NlssxXMl2zg2WI6CWmVCyKlmvVo="></p>
+<p>The output shows the function that caused the error and the description related to the error. It returned IndexError, which is raised while attempting to access an index that's outside the bounds of a list. This error occurs because the script <strong>emails.py</strong> takes in two parameters, the first and last name. We need to handle this type of incomplete inputs within the script. We need to decide what the correct output should be. Let's say, in this case, your script should output "Missing parameter".</p>
+<p>Let's now fix the code. The last test case showed that the script fails if only one parameter is passed. We would now handle these types of incomplete inputs given to the script file <strong>emails.py</strong>.</p>
+<p>There are two ways to solve this issue:</p>
+<ul>
+<li>Use a try/except clause to handle IndexError.</li>
+<li>Check the length of input parameters before traversing the user_emails.csv file for the email address.</li>
+</ul>
+<p>You can use either of the above methods, but remember that test cases should pass and the script should return "Missing parameters" in this case.</p>
+<p>We will use the try/except clause here to solve this issue. Try/except blocks are used for exceptions and error handling. Since exceptions are detected during execution of a script/program, error handling in Python is done using exceptions that are caught in try blocks and handled in except blocks.</p>
+<p>Let's dive into how try/except blocks work:</p>
+<ul>
+<li>First, we execute the try clause.</li>
+<li>If no exception occurs, the except clause is ignored.</li>
+<li>If an exception occurs during the execution of the try clause, the rest of the try clause is then skipped.</li>
+<li>It then attempts to match the type with the exception named after the <strong>except</strong> keyword. If this matches, the except clause is executed. If it doesn't, the control is passed on to outer try statements. If no handler is found, it's an unhandled exception and the execution stops with an error message.</li>
+</ul>
+<p>A try statement may have more than one except clause to specify handlers for different exceptions. In our case, the exception error we need to handle is <strong>IndexError</strong>.</p>
+<p>Let's move forward by adding a try/except clause to the script <strong>emails.py</strong>.</p>
+<pre><code>nano emails.py
+</code><button class="button button--copy js-copy-button-21"><i class="fa fa-clipboard"></i></button></pre>
+<p>We will add the complete code block within the function <strong>find_email(argv)</strong>, which is within the try block, and add an IndexError exception within the except block. This means that the execution will start normally with any number of parameters given to the script. If the function <strong>find_email(argv)</strong> receives the required number of parameters, it will return the email address. And if the function doesn't receive the required number of parameters, it will throw an IndexError exception and the except clause which handles IndexError exception would then execute.</p>
+<p>Add the body of the function <strong>find_emails(argv)</strong> within the try block and add an except block:</p>
+<pre><code>def find_email(argv):
+  """ Return an email address based on the username given."""
+  # Create the username based on the command line input.
+  try:
+    fullname = str(argv[1] + " " + argv[2])
+    # Preprocess the data
+    email_dict = populate_dictionary('/home/&lt;username&gt;/data/user_emails.csv')
+    # Find and print the email
+    return email_dict.get(fullname.lower())
+  except IndexError:
+    return "Missing parameters"
+</code><button class="button button--copy js-copy-button-22"><i class="fa fa-clipboard"></i></button></pre>
+<p>The complete file emails.py should now look like this:</p>
+<pre><code>#!/usr/bin/env python3
+
+import sys
+import csv
+
+
+def populate_dictionary(filename):
+  """Populate a dictionary with name/email pairs for easy lookup."""
+  email_dict = {}
+  with open(filename) as csvfile:
+    lines = csv.reader(csvfile, delimiter = ',')
+    for row in lines:
+      name = str(row[0].lower())
+      email_dict[name] = row[1]
+  return email_dict
+
+def find_email(argv):
+  """ Return an email address based on the username given."""
+  # Create the username based on the command line input.
+  try:
+    fullname = str(argv[1] + " " + argv[2])
+    # Preprocess the data
+    email_dict = populate_dictionary('/home/{{ username }}/data/user_emails.csv')
+    # Find and print the email
+    return email_dict.get(fullname.lower())
+  except IndexError:
+    return "Missing parameters"
+
+def main():
+  print(find_email(sys.argv))
+
+if __name__ == "__main__":
+  main()
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>Now run the test cases within the file email_test.py again:</p>
+<pre><code>./emails_test.py
+</code><button class="button button--copy js-copy-button-24"><i class="fa fa-clipboard"></i></button></pre>
+<p>You should now see that both the test cases ran successfully and an OK message appeared.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="12379306">
+Test case 1: Missing parameters
+</ql-activity-tracking></p>
+<p>Congrats! You've just handled a test case within the script.</p>
+<h2 id="step6">Test Case 2: Random email address</h2>
+<p>Let's find some other edge cases. We'll search for an employee that doesn't exist. Can you expect the output the script would give? The expected output in such a case should be "No email address found". Let's see how the script reacts to this case by adding a test case in the file <strong>emails_test.py</strong> just after the second test case.</p>
+<p>Open the file emails_test.py.</p>
+<pre><code>nano emails_test.py
+</code><button class="button button--copy js-copy-button-25"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the following test case after the previous test case:</p>
+<pre><code>  def test_two_name(self):
+    testcase = [None, "Roy","Cooper"]
+    expected = "No email address found"
+    self.assertEqual(find_email(testcase), expected)
+</code><button class="button button--copy js-copy-button-26" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The file should now look like this:</p>
+<pre><code>#!/usr/bin/env python3
+
+import unittest
+from emails import find_email
+
+
+class EmailsTest(unittest.TestCase):
+  def test_basic(self):
+    testcase = [None, "Bree", "Campbell"]
+    expected = "breee@abc.edu"
+    self.assertEqual(find_email(testcase), expected)
+
+  def test_one_name(self):
+    testcase = [None, "John"]
+    expected = "Missing parameters"
+    self.assertEqual(find_email(testcase), expected)
+
+  def test_two_name(self):
+    testcase = [None, "Roy","Cooper"]
+    expected = "No email address found"
+    self.assertEqual(find_email(testcase), expected)
+
+if __name__ == '__main__':
+  unittest.main()
+</code><button class="button button--copy js-copy-button-27"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>Run the test script using:</p>
+<pre><code>./emails_test.py
+</code><button class="button button--copy js-copy-button-28"><i class="fa fa-clipboard"></i></button></pre>
+<p>The test case failed! This means the script doesn't output the message "No email address found" if we search for an employee that doesn't exist.</p>
+<p>Let's edit the script <strong>emails.py</strong> to return a message saying "No email address found" where users searched for don't exist.</p>
+<p>Can you guess the statement where the function find_email(argv) actually fetches the email address of the user? The method <strong>email_dict.get(full):</strong> does the job. This method fetches the email address from the list if found, and if not, it returns None.</p>
+<p>We need to add an if-else loop here, which will return the email address only if the method email_dict.get(username) returns a valid email address. If it doesn't, it will return the message "No email address found".</p>
+<p>To do this, edit the script file using:</p>
+<pre><code>nano emails.py
+</code><button class="button button--copy js-copy-button-29"><i class="fa fa-clipboard"></i></button></pre>
+<p>Locate the statement <strong>return email_dict.get(fullname.lower()):</strong> within the script under the function find_email(argv) and replace it with the following block of code:</p>
+<pre><code>    if email_dict.get(fullname.lower()):
+      return email_dict.get(fullname.lower())
+    else:
+      return "No email address found"
+</code><button class="button button--copy js-copy-button-30" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The file should now look like this:</p>
+<pre><code>#!/usr/bin/env python3
+
+import csv
+import sys
+
+
+def populate_dictionary(filename):
+  """Populate a dictionary with name/email pairs for easy lookup."""
+  email_dict = {}
+  with open(filename) as csvfile:
+    lines = csv.reader(csvfile, delimiter = ',')
+    for row in lines:
+      name = str(row[0].lower())
+      email_dict[name] = row[1]
+  return email_dict
+
+def find_email(argv):
+  """ Return an email address based on the username given."""
+  # Create the username based on the command line input.
+  try:
+    fullname = str(argv[1] + " " + argv[2])
+    # Preprocess the data
+    email_dict = populate_dictionary('/home/{{ username }}/data/user_emails.csv')
+     # If email exists, print it
+    if email_dict.get(fullname.lower()):
+      return email_dict.get(fullname.lower())
+    else:
+      return "No email address found"
+  except IndexError:
+    return "Missing parameters"
+
+def main():
+  print(find_email(sys.argv))
+
+if __name__ == "__main__":
+  main()
+</code><button class="button button--copy js-copy-button-31"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>Now, run the test case to check if the script still produces an error.</p>
+<pre><code>python3 emails_test.py
+</code><button class="button button--copy js-copy-button-32"><i class="fa fa-clipboard"></i></button></pre>
+<p>Since we've handled the IndexError exception, the test case should now pass.</p>
+<p><img alt="Test case three pass" src="./Implementing Unit Testing _ Qwiklabs_files/evugEu7J7JvdtRfGwwig0tHIR3fmBl3XO4jDbTAS6yg="></p>
+<p>You can also run the script <strong>emails.py</strong> by passing some random names (that aren't present in user_emails.csv) and check the output.</p>
+<pre><code>python3 emails.py Roy Cooper
+</code><button class="button button--copy js-copy-button-33" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>This should now give the following output:</p>
+<p><img alt="96fe07307052d012.png" src="./Implementing Unit Testing _ Qwiklabs_files/KlvYiONCrhTY28f16fV3jPV51UkkXYtZv+b1XSZbGrI="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="12379306">
+Test case 2: Random email address
+</ql-activity-tracking></p>
+<h2 id="step7">Congratulations!</h2>
+<p>Congrats! You've successfully added tests to reproduce bugs, made the necessary corrections, and verified all tests pass to make sure the script works! Great job!</p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47746#step1" class="">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step2" class="">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step3" class="">Prerequisites</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step4" class="">Introduction to test cases</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step5" class="">Test Case 1: Missing parameters</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step6" class="is-active">Test Case 2: Random email address</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step7" class="">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47746#step8" class="">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">10/10</h3>
+<iframe class="l-ie-iframe-fix" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Test case 1: Missing parameters
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">5</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Test case 2: Random email address
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">5</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Implementing Unit Testing _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+In this lab, we will be writing test cases and correcting bugs within the existing script.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2387">https://googlecoursera.qwiklabs.com/catalog_lab/2387</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="1416333" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6090" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2387" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47746" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(5).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./Implementing Unit Testing _ Qwiklabs_files/anchor.html" width="256" height="60" role="presentation" name="a-nwxz6xgslr4y" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div id="drift-widget-container" style="position: absolute; z-index: 2147483647;"><iframe id="drift-widget" src="./Implementing Unit Testing _ Qwiklabs_files/index.html" title="Drift Messenger" role="complementary" style="border: none; display: block; height: 0px !important; width: 0px !important; position: fixed; top: auto; left: auto; bottom: 0px; right: 0px; visibility: hidden; z-index: 2147483647; max-height: 100vh; max-width: 100vw; transition: none 0s ease 0s; background: none transparent; opacity: 1; pointer-events: auto; touch-action: auto;" class="drift-widget-hidden"></iframe></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(7).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;width: 118px;" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(8).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Implementing Unit Testing _ Qwiklabs_files/saved_resource(9).html"></iframe></div></body></html>
