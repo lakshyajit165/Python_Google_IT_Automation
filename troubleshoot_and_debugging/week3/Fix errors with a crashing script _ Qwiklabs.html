@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47751 -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:1416333}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="QZ3CItaL2qqOsKMYNyLBlxtxQG9y0go4213qIY87peELTIYoq/YfB90npfTv5GUkKFi8gbpGmKxMYEJOWl4bYA==">
+<title>Fix errors with a crashing script | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to fix the infrastructure around the code." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Fix errors with a crashing script | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to fix the infrastructure around the code." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Fix errors with a crashing script _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="text/javascript" async="" src="./Fix errors with a crashing script _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Fix errors with a crashing script _ Qwiklabs_files/analytics.js"></script><script type="text/javascript" async="" src="./Fix errors with a crashing script _ Qwiklabs_files/analytics.min.js"></script><script type="text/javascript" id="www-widgetapi-script" src="./Fix errors with a crashing script _ Qwiklabs_files/www-widgetapi.js" async=""></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"LAKSHYAJIT","lastname":"LAXMIKANT","fullname":"LAKSHYAJIT LAXMIKANT","company":"Coursera","email":"lakshyajit165@gmail.com","origin":"googlecoursera-run, lti-coursera","subscriptions":1,"id":"789f4b2951493e14c965318ea3146db7","qlCreatedAt":"2019-02-08 14:17:59 UTC","optIn":true};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Fix errors with a crashing script _ Qwiklabs_files/snippet.js"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Fix errors with a crashing script _ Qwiklabs_files/application-4c3d1e8bc7757ea71809ef44e35c5d8018fb66ce6a4a777389558445ba2ce8a2.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Fix errors with a crashing script _ Qwiklabs_files/webcomponents-loader.js"></script><script src="./Fix errors with a crashing script _ Qwiklabs_files/webcomponents-hi.js"></script>
+<script src="./Fix errors with a crashing script _ Qwiklabs_files/hallofmirrors-eae6675400af78e1654e424d2281253062e59cd03fa85f6c1e9b71fcef236ded.js"></script><script async="" src="./Fix errors with a crashing script _ Qwiklabs_files/lazy.min.js"></script>
+<script src="./Fix errors with a crashing script _ Qwiklabs_files/iframe_api"></script>
+<script src="./Fix errors with a crashing script _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js"></script>
+<script src="./Fix errors with a crashing script _ Qwiklabs_files/application-c23343461fee67994bfc26ae6509cf3e86bcddd7d48088f4de19fb8c0ed6eb13.js"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" cz-shortcut-listen="true">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Fix errors with a crashing script
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:1416333}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Fix errors with a crashing script _ Qwiklabs_files/31c99f8d33487203415d57025d4a6b43.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Fix errors with a crashing script _ Qwiklabs_files/31c99f8d33487203415d57025d4a6b43.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+LAKSHYAJIT LAXMIKANT
+</h4>
+<p class="body-2 text--gray">
+<span>lakshyajit165@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">Monthly Subscription
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="QZ3CItaL2qqOsKMYNyLBlxtxQG9y0go4213qIY87peELTIYoq/YfB90npfTv5GUkKFi8gbpGmKxMYEJOWl4bYA==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47751#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Fix errors with a crashing script&quot;,&quot;lab_name&quot;:&quot;Fix errors with a crashing script&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47751" data-lab-billing-limit="0.0" data-lab-duration="5400" data-lab-instance-id="12946054" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[{&quot;label&quot;:&quot;linux-instance external IP address&quot;,&quot;value&quot;:&quot;35.194.25.225&quot;},{&quot;label&quot;:&quot;username&quot;,&quot;value&quot;:&quot;student-00-f35a77b57f41&quot;}]" connectionfiles="[{&quot;text&quot;:&quot;Download PEM&quot;,&quot;href&quot;:&quot;/lab_instances/download_pem/12946054&quot;,&quot;icon&quot;:&quot;file_download&quot;},{&quot;text&quot;:&quot;Download PPK&quot;,&quot;href&quot;:&quot;/lab_instances/download_ppk/12946054&quot;,&quot;icon&quot;:&quot;file_download&quot;}]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:true}" labtimer="{&quot;ticking&quot;:true,&quot;secondsRemaining&quot;:4940}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Fix errors with a crashing script
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47751/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.265"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 68.24px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>You're an IT professional who's in charge of the deployment and maintenance of software in your company's fleet. A piece of software that's deployed on all machines in your fleet is throwing an error on a number of these machines. You haven't written the software and don't have access to the source code. You'll need to examine the environment where the software is running in and try to work out what's going on.</p>
+<h4><strong>What you'll do</strong></h4>
+<ul>
+<li>Understand the error messages</li>
+<li>Track down the root cause and work to fix it</li>
+<li>Understand what to do when you can't modify the program that's throwing errors</li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Fix errors with a crashing script _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Fix errors with a crashing script _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Fix errors with a crashing script _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Fix errors with a crashing script _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Fix errors with a crashing script _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Fix errors with a crashing script _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Fix errors with a crashing script _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Fix errors with a crashing script _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Fix errors with a crashing script _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Fix errors with a crashing script _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Fix errors with a crashing script _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">ImportError</h2>
+<p>Since you haven't written the software and don't have access to the source code, you'll need to examine the environment where the software is running and try to work out what's going on. There's a python script named <code>infrastructure</code> in <code>/usr/bin</code> directory that reads data from a CSV file and prints them to the terminal in a nicely formatted manner. Let's run this script and see whether it generates any errors.</p>
+<p>Now change the directory to <code>root</code>, and run the script.</p>
+<pre><code>cd /
+python3 /usr/bin/infrastructure
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="866e4319baa2aa62.png" src="./Fix errors with a crashing script _ Qwiklabs_files/fkKbHgAkD8hUPXbA0_vd5Ljq_q3urL6y20eLT7isKEc="></p>
+<p>The script crashed, displaying an <code>ImportError</code>. This error is raised when an <code>import</code> statement has trouble importing a specific module. You could also see the module that the <code>import</code> statement hasn't found (i.e. matplotlib). We'll need to import this module before we continue to run the script again.</p>
+<h3>Fix:</h3>
+<p>In order to fix this error, you first need to install <strong>pip3</strong> which is a Python package installer. This downloads and configures new python modules with single-line commands.</p>
+<pre><code>sudo apt install python3-pip
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, install the <code>matplotlib</code> python library using pip3:</p>
+<pre><code>pip3 install matplotlib
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Matplotlib is a plotting library for the Python programming language and its numerical mathematics extension <strong>NumPy</strong>(installed upon installing matplotlib). It provides an object-oriented API for embedding plots into applications using general-purpose GUI toolkits. Even simpler, it's a visualization library in Python for 2D plots of arrays.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="12946054">
+Download 'matplotlib' module
+</ql-activity-tracking></p>
+<h2 id="step4">NoFileError</h2>
+<p>After installing the necessary modules, run the script again.</p>
+<pre><code>python3 /usr/bin/infrastructure
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="ea48b3bd670e6b2e.png" src="./Fix errors with a crashing script _ Qwiklabs_files/RO_8zDIMpD4RcSD1wlaYzKO+vfO6l3jT40vZDajX5xI="></p>
+<p>This time it returns a <code>NoFileError</code> with a message that it could not find data.csv file in the working directory. Try debugging this issue.</p>
+<h3>Fix:</h3>
+<p>Let's navigate to the working directory and see if the <code>data.csv</code> file exists.</p>
+<pre><code>cd ~
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="bc97581598ff3eba.png" src="./Fix errors with a crashing script _ Qwiklabs_files/vXrPqsIwMlC9lqIWF0VqVzCAairVdN8zDUf7QF5vES8="></p>
+<p>As you can see, the file <code>data</code> has the extension .bak. As we mentioned earlier, the script <code>infrastructure</code> works on CSV files. Interpret the error message, which also says that it didn't find a <code>data.csv</code> file. We've now found the root cause of the issue. Let's move forward by renaming the file <code>data.bak</code> to <code>data.csv</code>.</p>
+<pre><code>mv data.bak data.csv
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="12946054">
+Rename data.csv file
+</ql-activity-tracking></p>
+<p>Now, navigate back to the root directory and run the script again.</p>
+<pre><code>cd /
+python3 /usr/bin/infrastructure
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="6d740adde208379.png" src="./Fix errors with a crashing script _ Qwiklabs_files/pb4muJRIokukTvMeSpLFmE8UJalXnOAEoC7NAMal+f8="></p>
+<p>This now gives a <code>MissingColumnError</code>. It says that it couldn't find a column named "company" within the <code>data.csv</code> file.</p>
+<h2 id="step5">MissingColumnError</h2>
+<p>Let's check the <code>data.csv</code> file for the missing column name.</p>
+<pre><code>cat ~/data.csv
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="9fa1e5fc77239a6f.png" src="./Fix errors with a crashing script _ Qwiklabs_files/iXhTahSAgfQwzpBOMuc0DCBjbttqdNhMszQNHq5dg7w="></p>
+<p>So, the column name is actually missing. Let's add the column name and run the script again.</p>
+<p>Grant the permissions to the data.csv file.</p>
+<pre><code>sudo chmod 777 ~/data.csv
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>Open <code>data.csv</code> file using nano editor.</p>
+<pre><code>nano ~/data.csv
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the missing column name and save the file by clicking Ctrl-o, followed by Enter key and Ctrl-x.</p>
+<p>Now, run the script again:</p>
+<pre><code>python3 /usr/bin/infrastructure
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="24cebe5b9a3ebd40.png" src="./Fix errors with a crashing script _ Qwiklabs_files/xyyGDtMxCJEBcuWoKxsLxJHejVQ6TBbK06S1Yqw27MA="></p>
+<p>This time you fixed all the errors!</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3" labinstanceid="12946054">
+Add column in data.csv
+</ql-activity-tracking></p>
+<h2 id="step6">Congratulations!</h2>
+<p>Congrats! You've correctly understood the error messages and fixed them by tracking down the root cause. This will help you as an IT professional who's in charge of the deployment and maintenance of software in your company's fleet.</p>
+<h2 id="step7">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47751#step1" class="">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step2" class="is-active">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step3">ImportError</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step4">NoFileError</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step5">MissingColumnError</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step6">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47751#step7">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">15/15</h3>
+<iframe class="l-ie-iframe-fix" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Download 'matplotlib' module
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">5</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Rename data.csv file
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">5</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Add column in data.csv
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="3">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">5</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Fix errors with a crashing script _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to fix the infrastructure around the code.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2378">https://googlecoursera.qwiklabs.com/catalog_lab/2378</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="1416333" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6095" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2378" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47751" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 118px;width: 118px;" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Fix errors with a crashing script _ Qwiklabs_files/saved_resource(7).html"></iframe></div></body></html>
