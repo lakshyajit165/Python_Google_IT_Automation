@@ -1,12 +1,11 @@
-​#!/usr/bin/env python3
+#!/usr/bin/env python3
 from multiprocessing import Pool
-import multiprocessing
-import subprocess
-import os
-home_add = os.path.expanduser('~')      #Gets home path
-src = home_add + "data/prod/"
-dest = home_add + "data/prod_backup/"
-
+def run(task):
+    # Do something with task here
+    print("Handling {}".format(task))
 if __name__ == "__main__":
-  pool = Pool(multiprocessing.cpu_count())
-  pool.apply(subprocess.call, args=(["rsync", "-arq", src, dest],))
+    tasks = ['task1', 'task2', 'task3']
+    # Create a pool of specific number of CPUs
+    p = Pool(len(tasks))
+    # Start each task within the pool
+    p.map(run, tasks)
